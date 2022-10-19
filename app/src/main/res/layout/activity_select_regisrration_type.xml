@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SelectRegisrrationType">
+
+    <Button
+        android:id="@+id/FuelStationType"
+        android:layout_width="162dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="126dp"
+        android:layout_marginTop="169dp"
+        android:layout_marginEnd="123dp"
+        android:text="Join the Quue" />
+
+    <Button
+        android:id="@+id/UserType"
+        android:layout_width="157dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/FuelStationType"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="133dp"
+        android:layout_marginTop="57dp"
+        android:layout_marginEnd="121dp"
+        android:text="MY fuel stations" />
+
+</RelativeLayout>
