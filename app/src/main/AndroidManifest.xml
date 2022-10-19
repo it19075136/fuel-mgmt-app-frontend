@@ -18,6 +18,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".SelectRegisrrationType"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".FuelStationRegistration"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".UserRegistration"
+            android:exported="true">
+        </activity>
+
     </application>
 
 </manifest>
