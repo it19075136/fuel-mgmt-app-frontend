@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FuelStation.FuelStationList"
+    android:padding="15dp">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/newFuelStation"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:padding="12dp"
+        app:icon="@drawable/ic_baseline_add_circle_24"
+        android:text="New Fuel Station"
+        app:iconGravity="textStart"
+        android:textColor="@color/white"
+        app:cornerRadius="10dp"
+        app:rippleColor="@color/ripple" />
+
+<!--    list here scrollview -->
+
+</RelativeLayout>

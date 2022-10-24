@@ -7,13 +7,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class SelectRegisrrationType extends AppCompatActivity {
+import com.example.fuel_mgmt_app_frontend.FuelStation.FuelStationList;
+import com.example.fuel_mgmt_app_frontend.User.UserRegistration;
+
+public class SelectRegisrationType extends AppCompatActivity {
 
     Button userTypebtn,fuelStationTypebtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_select_regisrration_type);
+        setContentView(R.layout.activity_select_regisration_type);
 
         userTypebtn = findViewById(R.id.UserType);
         fuelStationTypebtn = findViewById(R.id.FuelStationType);
@@ -21,7 +25,7 @@ public class SelectRegisrrationType extends AppCompatActivity {
         userTypebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =  new Intent(SelectRegisrrationType.this,UserRegistration.class);
+                Intent intent =  new Intent(SelectRegisrationType.this, UserRegistration.class);
                 startActivity(intent);
             }
         });
@@ -29,7 +33,7 @@ public class SelectRegisrrationType extends AppCompatActivity {
         fuelStationTypebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =  new Intent(SelectRegisrrationType.this,FuelStationRegistration.class);
+                Intent intent =  new Intent(SelectRegisrationType.this, FuelStationList.class);
                 startActivity(intent);
             }
         });
