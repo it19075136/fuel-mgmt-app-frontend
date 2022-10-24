@@ -7,4 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="ripple">#B4F3F3</color>
+    <color name="primaryBlue">#2196F3</color>
+    <color name="linkBlue">#00BCD4</color>
+    <color name="placeholderColor">#F6F6F6</color>
 </resources>

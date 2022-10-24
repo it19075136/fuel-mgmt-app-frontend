@@ -1,4 +1,4 @@
-package com.example.fuel_mgmt_app_frontend;
+package com.example.fuel_mgmt_app_frontend.User;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,16 +6,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.fuel_mgmt_app_frontend.DBHelper;
+import com.example.fuel_mgmt_app_frontend.R;
+import com.example.fuel_mgmt_app_frontend.SelectRegisrationType;
+import com.google.android.material.textfield.TextInputEditText;
+
 public class MainActivity extends AppCompatActivity {
 
-    EditText emailEditText,passwordEditText;
+    TextInputEditText emailEditText,passwordEditText;
     TextView signupText;
     Button loginbtn;
     DBHelper DB;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,11 +67,11 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if(DB.checkEmailPassword(email,password)){
                     Toast.makeText(MainActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
-                    Intent intent =  new Intent(MainActivity.this,SelectRegisrrationType.class);
+                    Intent intent =  new Intent(MainActivity.this, SelectRegisrationType.class);
                     startActivity(intent);
                 }
                 else{
-                    Toast.makeText(MainActivity.this, "Login Unsuccessfull", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
                 }
             }
         });

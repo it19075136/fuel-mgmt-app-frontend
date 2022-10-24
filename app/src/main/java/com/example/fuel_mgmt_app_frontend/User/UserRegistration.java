@@ -1,4 +1,4 @@
-package com.example.fuel_mgmt_app_frontend;
+package com.example.fuel_mgmt_app_frontend.User;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,13 +6,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.fuel_mgmt_app_frontend.DBHelper;
+import com.example.fuel_mgmt_app_frontend.R;
+import com.example.fuel_mgmt_app_frontend.SelectRegisrationType;
+import com.google.android.material.textfield.TextInputEditText;
+
 public class UserRegistration extends AppCompatActivity{
 
-    EditText emailEditText,passwordEditText,rePasswordEditText;
+    TextInputEditText emailEditText,passwordEditText,rePasswordEditText;
     Button signupbtn;
     TextView loginText;
     DBHelper DB;
@@ -50,16 +54,16 @@ public class UserRegistration extends AppCompatActivity{
                 }
                 else if (!password.equals(rePassword)){
                     Toast.makeText(UserRegistration.this,
-                            "Password do not match", Toast.LENGTH_SHORT).show();
+                            "Passwords do not match", Toast.LENGTH_SHORT).show();
                 }else if(DB.checkEmail(email)){
-                    Toast.makeText(UserRegistration.this, "User Name is already exits", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UserRegistration.this, "User already exists", Toast.LENGTH_SHORT).show();
                 }else if(DB.insertData(email,password)){
-                    Toast.makeText(UserRegistration.this, "Registration successfull", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(UserRegistration.this,SelectRegisrrationType.class);
+                    Toast.makeText(UserRegistration.this, "Registration successful", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(UserRegistration.this, SelectRegisrationType.class);
                     startActivity(intent);
                 }
                 else{
-                    Toast.makeText(UserRegistration.this, "Registration Unsuccessfull", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UserRegistration.this, "Registration failed", Toast.LENGTH_SHORT).show();
                 }
             }
         });

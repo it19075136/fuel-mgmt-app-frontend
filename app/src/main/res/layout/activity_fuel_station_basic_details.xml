@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    tools:context=".FuelStation.FuelStationBasicDetails">
+
+
+    <ImageView
+        android:id="@+id/fillingStation"
+        android:layout_width="match_parent"
+        android:layout_height="211dp"
+        android:elevation="10dp"
+        android:padding="5dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="Filling Station"
+        android:src="@drawable/filling_station" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/nameInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fillingStation"
+        android:outlineAmbientShadowColor="@color/primaryBlue"
+        app:boxBackgroundColor="@color/placeholderColor"
+        android:layout_marginTop="50dp"
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusBottomEnd="5dp"
+        app:boxCornerRadiusBottomStart="5dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/name"
+            android:inputType="text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/fuel_station_name"
+            android:paddingBottom="20dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/locationInput"
+        android:layout_below="@+id/nameInput"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:outlineAmbientShadowColor="@color/primaryBlue"
+        app:boxBackgroundColor="@color/placeholderColor"
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusBottomEnd="5dp"
+        app:boxCornerRadiusBottomStart="5dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/location"
+            android:inputType="text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/location"
+            android:paddingBottom="20dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/arrivalInput"
+        android:layout_below="@+id/locationInput"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:outlineAmbientShadowColor="@color/primaryBlue"
+        app:boxBackgroundColor="@color/placeholderColor"
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusBottomEnd="5dp"
+        app:boxCornerRadiusBottomStart="5dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/arrival"
+            android:inputType="datetime"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/fuel_arrival_time"
+            android:paddingBottom="20dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/availability"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/arrivalInput"
+        android:layout_marginTop="36dp"
+        android:backgroundTint="@color/design_default_color_primary"
+        android:padding="12dp"
+        android:text="@string/set_availabilities"
+        android:textColor="@color/white"
+        app:cornerRadius="10dp"
+        app:rippleColor="@color/ripple" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/next"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/availability"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:padding="12dp"
+        android:text="@string/proceed"
+        android:textColor="@color/white"
+        app:cornerRadius="10dp"
+        app:rippleColor="@color/ripple" />
+
+
+</RelativeLayout>

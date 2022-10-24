@@ -10,7 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Fuelmgmtappfrontend">
         <activity
-            android:name=".MainActivity"
+            android:name=".FuelStation.FuelStationList"
+            android:exported="false" />
+        <activity
+            android:name=".FuelStation.FuelStationBasicDetails"
+            android:exported="false" />
+        <activity
+            android:name=".User.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,18 +25,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SelectRegisrrationType"
-            android:exported="true">
-        </activity>
+            android:name=".SelectRegisrationType"
+            android:exported="true" />
         <activity
-            android:name=".FuelStationRegistration"
-            android:exported="true">
-        </activity>
-        <activity
-            android:name=".UserRegistration"
-            android:exported="true">
-        </activity>
-
+            android:name=".User.UserRegistration"
+            android:exported="true" />
     </application>
 
 </manifest>

@@ -1,14 +1,12 @@
-package com.example.fuel_mgmt_app_frontend;
+package com.example.fuel_mgmt_app_frontend.FuelStation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -16,14 +14,16 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
+
+import com.example.fuel_mgmt_app_frontend.DBHelper;
+import com.example.fuel_mgmt_app_frontend.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class FuelStationRegistration extends AppCompatActivity{
+public class FuelStationAvailability extends AppCompatActivity{
 
-    EditText emailEditText,passwordEditText,fuelStationNameEditText,districtEditText;
+    EditText emailEditText,passwordEditText,districtEditText;
     TextView loginText,Diesel_arrival_time_txt,Diesel_finish_time_txt,Diesel_super_arrival_time_txt,Diesel_super_finish_time_txt,Petrol92_arrival_time_txt,Petrol92_finish_time_txt,Petrol95_arrival_time_txt,Petrol95_finish_time_txt;
     Button signupbtn,Diesel_arrival_time_btn,Diesel_finish_time_btn,Diesel_super_arrival_time_btn,Diesel_super_finish_time_btn,Petrol92_arrival_time_btn,Petrol92_finish_time_btn,Petrol95_arrival_time_btn,Petrol95_finish_time_btn;
 
@@ -39,7 +39,6 @@ public class FuelStationRegistration extends AppCompatActivity{
 
 //        emailEditText =  findViewById(R.id.email);
 //        passwordEditText =  findViewById(R.id.password);
-        fuelStationNameEditText =  findViewById(R.id.fuelStationName);
 //        districtEditText =  findViewById(R.id.district);
         signupbtn =  findViewById(R.id.signup);
 //        autoCompleteTxt =  findViewById(R.id.auto_complete);
@@ -147,7 +146,6 @@ public class FuelStationRegistration extends AppCompatActivity{
             public void onClick(View view) {
                 String email = emailEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
-                String fuelStationName = fuelStationNameEditText.getText().toString();
 
 
 //                if(email.equals("")||password.equals("")||fuelStationName.equals("")||district.equals("")){
@@ -187,9 +185,9 @@ public class FuelStationRegistration extends AppCompatActivity{
 
                     }
                 };
-                new TimePickerDialog(FuelStationRegistration.this,timeSetListener,calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE),true).show();
+                new TimePickerDialog(FuelStationAvailability.this,timeSetListener,calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE),true).show();
             }
         };
-        new DatePickerDialog(FuelStationRegistration.this,dateSetListener,calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH)).show();
+        new DatePickerDialog(FuelStationAvailability.this,dateSetListener,calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH)).show();
     }
 }

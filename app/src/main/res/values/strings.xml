@@ -1,3 +1,17 @@
 <resources>
-    <string name="app_name">fuel-mgmt-app-frontend</string>
+    <string name="app_name">Fuely</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">login</string>
+    <string name="sign_up">sign up</string>
+    <string name="re_enter_password">Re-enter password</string>
+    <string name="new_user_click_here">New User? Click here</string>
+    <string name="already_have_account_click_here">Already have account? Click here</string>
+    <string name="shake_hand_image">shake hand image</string>
+    <string name="filling_station_image">Filling station image</string>
+    <string name="fuel_station_name">Fuel Station Name</string>
+    <string name="location">Location</string>
+    <string name="fuel_arrival_time">Fuel Arrival Time (optional)</string>
+    <string name="proceed">Proceed</string>
+    <string name="set_availabilities">Set Availabilities</string>
 </resources>
