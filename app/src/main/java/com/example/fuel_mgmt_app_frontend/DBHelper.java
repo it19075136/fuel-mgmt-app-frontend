@@ -119,11 +119,15 @@ public class DBHelper extends SQLiteOpenHelper{
         Cursor cursor = DB.rawQuery("Select * from users where isLoging = ?",new String[]{islog});
 
         if(cursor.getCount()==1) {
-            if (!cursor.getString(2).isEmpty()){
-                return cursor.getString(2);
-            }
-            else
-                return "no loging email";
+            Log.d("loging email", String.valueOf(cursor.getCount()));
+            int i = cursor.getColumnIndex("email");
+            Log.d("loging email column", String.valueOf(i));
+//            Log.d("loging email column", cursor.getString(i));
+//            if (!cursor.getString(i)){
+                return cursor.getString(i);
+//            }
+//            else
+//                return "no loging email";
         }
         else
             return "no loging email";
