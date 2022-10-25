@@ -4,8 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="15dp"
     tools:context=".SelectRegisrationType"
+    >
+    <include layout="@layout/toolbar"
+        android:id="@+id/appbar"
+
+        />
+<RelativeLayout
+    android:padding="15dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:gravity="center_vertical">
 
     <com.google.android.material.button.MaterialButton
@@ -16,11 +24,11 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="46dp"
         android:padding="12dp"
-        app:iconGravity="textStart"
-        app:icon="@drawable/ic_baseline_local_gas_station_24"
         android:text="MY fuel stations"
         android:textColor="@color/white"
         app:cornerRadius="10dp"
+        app:icon="@drawable/ic_baseline_local_gas_station_24"
+        app:iconGravity="textStart"
         app:rippleColor="@color/ripple" />
 
     <com.google.android.material.button.MaterialButton
@@ -38,5 +46,5 @@
         app:icon="@drawable/join_queue"
         app:iconGravity="textStart"
         app:rippleColor="@color/ripple" />
-
+</RelativeLayout>
 </RelativeLayout>

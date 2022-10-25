@@ -8,10 +8,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.example.fuel_mgmt_app_frontend.DBHelper;
 import com.example.fuel_mgmt_app_frontend.R;
+import com.example.fuel_mgmt_app_frontend.User.MainActivity;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.HashMap;
@@ -23,7 +26,8 @@ public class FuelStationBasicDetails extends AppCompatActivity {
     HashMap<String,Boolean> availabilities;
     boolean availabilityCheck = false;
     Intent intent;
-
+    ImageView backIcon,signOutIcon;
+    DBHelper DB;
     AlertDialog dialog;
 
     @Override
@@ -33,10 +37,27 @@ public class FuelStationBasicDetails extends AppCompatActivity {
 
         availabilityBtn = findViewById(R.id.availability);
         proceedBtn = findViewById(R.id.next);
-
+        backIcon =  findViewById(R.id.left_icon);
+        signOutIcon = findViewById(R.id.right_icon);
+        DB = new DBHelper(this);
         availabilities = new HashMap<>();
 
         createDialog();
+
+        signOutIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(DB.logedOut()){
+                    intent = new Intent(FuelStationBasicDetails.this, MainActivity.class);
+                    Toast.makeText(FuelStationBasicDetails.this, "Log out succesfuly", Toast.LENGTH_SHORT).show();
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(FuelStationBasicDetails.this, "Log out Unsuccesfuly", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
 
         availabilityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
