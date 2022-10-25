@@ -45,6 +45,8 @@ public class FuelStationList extends AppCompatActivity {
     ArrayList<StationModel> fuelStations = new ArrayList<StationModel>();
     MainAdapter adapter;
 
+    StationModel model  = new StationModel();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,14 +60,12 @@ public class FuelStationList extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recycler_view);
 
-        getFuelStationsList();
-
-
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
         newFuelStation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.d("StartedMessage", "newFuelStation.setOnClickListener started");
 //                String email = DB.logingEmail();
 //                Log.d("loged email", email);
                 String url = "https://fuely-api.herokuapp.com/api/fuelstation/byEmail/sandungwp@gmail.com";
@@ -89,11 +89,16 @@ public class FuelStationList extends AppCompatActivity {
                                         String stationName = responseObj.getString("stationName");
                                         Log.d("location", location);
                                         Log.d("stationName", stationName);
+                                        model.setStationName(stationName);
+
+                                        fuelStations.add(model);
+
 
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
                                 }
+                                Log.d("fuelStations Array size", String.valueOf(fuelStations.size()));
                             }
                         }, new Response.ErrorListener() {
                     @Override
@@ -105,6 +110,9 @@ public class FuelStationList extends AppCompatActivity {
                 JSONArray jsonArray=getStationById(url);
                 Intent intent =  new Intent(FuelStationList.this, FuelStationBasicDetails.class);
                 startActivity(intent);
+
+                getFuelStationsList();
+
             }
         });
         signOutIcon.setOnClickListener(new View.OnClickListener() {
@@ -163,7 +171,7 @@ public class FuelStationList extends AppCompatActivity {
 
     private void getFuelStationsList() {
 
-        StationModel model = new StationModel();
+//        StationModel model = new StationModel();
         //loop and add names  in heres
 //        model.setStationName();
         //call api before this
