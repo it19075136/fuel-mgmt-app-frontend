@@ -1,11 +1,15 @@
 package com.example.fuel_mgmt_app_frontend.FuelStation;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.fuel_mgmt_app_frontend.DBHelper;
@@ -14,12 +18,18 @@ import com.example.fuel_mgmt_app_frontend.SelectRegisrationType;
 import com.example.fuel_mgmt_app_frontend.User.MainActivity;
 import com.google.android.material.button.MaterialButton;
 
+import java.util.ArrayList;
+
 public class FuelStationList extends AppCompatActivity {
 
     MaterialButton newFuelStation;
     ImageView backIcon,signOutIcon;
     DBHelper DB;
     Intent intent;
+
+    RecyclerView recyclerView;
+    ArrayList<StationModel> fuelStations = new ArrayList<StationModel>();
+    MainAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +40,10 @@ public class FuelStationList extends AppCompatActivity {
         backIcon =  findViewById(R.id.left_icon);
         signOutIcon = findViewById(R.id.right_icon);
         DB = new DBHelper(this);
+
+        recyclerView = findViewById(R.id.recycler_view);
+
+        getFuelStationsList();
 
         newFuelStation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,4 +68,22 @@ public class FuelStationList extends AppCompatActivity {
         });
     }
 
+    private void getFuelStationsList() {
+
+        StationModel model = new StationModel();
+        //loop and add names  in heres
+//        model.setStationName();
+        //call api before this
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        adapter = new MainAdapter(this,fuelStations);
+
+        recyclerView.setAdapter(adapter);
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
 }
