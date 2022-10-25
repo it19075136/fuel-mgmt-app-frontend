@@ -7,19 +7,24 @@
     tools:context=".FuelStation.FuelStationList"
     android:padding="15dp">
 
+    <include layout="@layout/toolbar"
+        android:id="@+id/appbar"
+        />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/newFuelStation"
         style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/appbar"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="11dp"
         android:padding="12dp"
-        app:icon="@drawable/ic_baseline_add_circle_24"
         android:text="New Fuel Station"
-        app:iconGravity="textStart"
         android:textColor="@color/white"
         app:cornerRadius="10dp"
+        app:icon="@drawable/ic_baseline_add_circle_24"
+        app:iconGravity="textStart"
         app:rippleColor="@color/ripple" />
 
 <!--    list here scrollview -->

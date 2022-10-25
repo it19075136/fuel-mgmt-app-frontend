@@ -7,16 +7,19 @@
     android:padding="15dp"
     tools:context=".FuelStation.FuelStationBasicDetails">
 
+    <include layout="@layout/toolbar"
+        android:id="@+id/appbar"
+        />
 
     <ImageView
         android:id="@+id/fillingStation"
-        android:layout_width="match_parent"
-        android:layout_height="211dp"
+        android:layout_width="wrap_content"
+        android:layout_height="136dp"
+        android:layout_below="@+id/appbar"
+        android:layout_marginTop="11dp"
+        android:contentDescription="Filling Station"
         android:elevation="10dp"
         android:padding="5dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:contentDescription="Filling Station"
         android:src="@drawable/filling_station" />
 
     <com.google.android.material.textfield.TextInputLayout
