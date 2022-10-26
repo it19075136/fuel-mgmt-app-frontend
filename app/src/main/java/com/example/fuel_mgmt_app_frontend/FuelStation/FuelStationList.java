@@ -37,7 +37,7 @@ import org.json.JSONObject;
 public class FuelStationList extends AppCompatActivity {
 
     MaterialButton newFuelStation;
-    ImageView backIcon,signOutIcon;
+    ImageView signOutIcon;
     DBHelper DB;
     Intent intent;
 
@@ -53,7 +53,6 @@ public class FuelStationList extends AppCompatActivity {
         setContentView(R.layout.activity_fuel_station_list);
 
         newFuelStation = findViewById(R.id.newFuelStation);
-        backIcon =  findViewById(R.id.left_icon);
         signOutIcon = findViewById(R.id.right_icon);
         DB = new DBHelper(this);
 

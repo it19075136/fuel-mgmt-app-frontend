@@ -18,7 +18,7 @@ import com.example.fuel_mgmt_app_frontend.queue.JoinQueueSearchList;
 public class SelectRegisrationType extends AppCompatActivity {
 
     Button userTypebtn,fuelStationTypebtn;
-    ImageView backIcon,signOutIcon;
+    ImageView signOutIcon;
     DBHelper DB;
     Intent intent;
 
@@ -29,7 +29,6 @@ public class SelectRegisrationType extends AppCompatActivity {
 
         userTypebtn = findViewById(R.id.UserType);
         fuelStationTypebtn = findViewById(R.id.FuelStationType);
-        backIcon =  findViewById(R.id.left_icon);
         signOutIcon = findViewById(R.id.right_icon);
         DB = new DBHelper(this);
 
