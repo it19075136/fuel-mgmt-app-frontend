@@ -117,6 +117,9 @@
 
     </LinearLayout>
 
+    
+
+
     <LinearLayout
         android:id="@+id/position"
         android:layout_width="match_parent"
@@ -138,7 +141,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="monospace"
-            android:text="3"
+            android:text="0"
             android:padding="10dp"
             android:textSize="48sp"
             android:src="@drawable/green_tick" />
