@@ -37,14 +37,11 @@
         app:iconGravity="textStart"
         app:rippleColor="@color/ripple" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="397dp"
-        android:layout_height="673dp"
-        android:layout_marginTop="170dp"
-        android:id="@+id/recycler_view"
-        tools:listitem="@layout/fuel_stations"
-
-        />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/fuel_stations" />
 
     </LinearLayout>
 
