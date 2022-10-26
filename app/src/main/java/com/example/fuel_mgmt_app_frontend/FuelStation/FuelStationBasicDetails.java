@@ -126,8 +126,9 @@ public class FuelStationBasicDetails extends AppCompatActivity {
 //                    Log.d("date", String.valueOf(date));//2022-10-28T21:34
 //                    Log.d("arrivaleTime", String.valueOf(arrivaleTime));
 //                    System.out.println(arrivaleTime);
-
-                    createFuelStation(url,stationName,location, availabilities,arrivaleTime,requestQueue,"sandungwp@gmail.com");
+                    if(DB.logingEmail()!=null){
+                        createFuelStation(url,stationName,location, availabilities,arrivaleTime,requestQueue,DB.logingEmail());
+                    }
 
 
 
