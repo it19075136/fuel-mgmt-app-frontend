@@ -11,4 +11,7 @@
     <color name="primaryBlue">#2196F3</color>
     <color name="linkBlue">#00BCD4</color>
     <color name="placeholderColor">#F6F6F6</color>
+    <color name="danger">#F44336</color>
+    <color name="success">#4CAF50</color>
+    <color name="cancel">#ABACAB</color>
 </resources>

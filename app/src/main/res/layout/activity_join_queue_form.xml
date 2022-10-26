@@ -10,13 +10,12 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/stationName"
-        android:layout_alignParentTop="true"
-        android:textAlignment="center"
+        style="@style/TextAppearance.MaterialComponents.Headline5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/TextAppearance.MaterialComponents.Headline5"
+        android:layout_alignParentTop="true"
         android:text="Station Name"
-        />
+        android:textAlignment="center" />
 
     <ImageView
         android:id="@+id/joinImage"

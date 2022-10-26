@@ -2,6 +2,7 @@ package com.example.fuel_mgmt_app_frontend.queue;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -34,7 +35,8 @@ public class JoinQueueForm extends AppCompatActivity {
     MaterialTextView stationName;
     Spinner vehicleType;
     MaterialButton joinNowBtn;
-    String stationId = "6356b604dc7368b840073205";
+    String stationId = "6358f1fd7c214d90d7a47dcf", loggedInEmail = "avanthac@yahoo.com";
+    Intent intent;
 
     private static final String[] VEHICLE_TYPES = new String[] {
             "SEDAN", "HATCHBACK", "T-WHEEL", "SUV", "VAN/LIGHT LORRY", "BUS/HEAVY LORRY", "MOTORBIKE"
@@ -64,8 +66,8 @@ public class JoinQueueForm extends AppCompatActivity {
         joinNowBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                create schedule
-                createSchedule("avanthac@yahoo.com");
+//                create schedule async
+                createSchedule(loggedInEmail);
             }
         });
 
@@ -90,14 +92,10 @@ public class JoinQueueForm extends AppCompatActivity {
                 SCHEDULE_ENDPOINT,
                 requestBody,
                 (Response.Listener<JSONObject>) response -> {
-                    for (int i = 0; i < response.length(); i++) {
-
-                        try {
-                            Toast.makeText(JoinQueueForm.this,"Successfully joined the queue: "+response.getString("email"),Toast.LENGTH_SHORT).show();
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
+                            Toast.makeText(JoinQueueForm.this,"Successfully joined the queue",Toast.LENGTH_SHORT).show();
+                            intent = new Intent(this,JoinedStationQueueDetails.class);
+                            intent.putExtra("station",stationId);
+                            startActivity(intent);
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {

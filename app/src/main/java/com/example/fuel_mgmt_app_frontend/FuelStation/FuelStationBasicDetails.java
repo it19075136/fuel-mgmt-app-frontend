@@ -26,7 +26,7 @@ public class FuelStationBasicDetails extends AppCompatActivity {
     HashMap<String,Boolean> availabilities;
     boolean availabilityCheck = false;
     Intent intent;
-    ImageView backIcon,signOutIcon;
+    ImageView signOutIcon;
     DBHelper DB;
     AlertDialog dialog;
 
@@ -37,7 +37,6 @@ public class FuelStationBasicDetails extends AppCompatActivity {
 
         availabilityBtn = findViewById(R.id.availability);
         proceedBtn = findViewById(R.id.next);
-        backIcon =  findViewById(R.id.left_icon);
         signOutIcon = findViewById(R.id.right_icon);
         DB = new DBHelper(this);
         availabilities = new HashMap<>();
