@@ -25,12 +25,77 @@
         android:text="Filling Station Details"
         android:textAlignment="center" />
 
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/location"
+        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fillingStation"
+        android:layout_centerHorizontal="true"
+        android:text="location" />
+
+    <LinearLayout
+        android:id="@+id/stationDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/location"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textview.MaterialTextView
+            style="@style/TextAppearance.MaterialComponents.Body2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Next Fuel arrival time: " />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/arrivalTime"
+            style="@style/TextAppearance.MaterialComponents.Body2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="loading..." />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textview.MaterialTextView
+            style="@style/TextAppearance.MaterialComponents.Body2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Approx. Fuel finish time: " />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/finishTime"
+            style="@style/TextAppearance.MaterialComponents.Body2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="loading..." />
+
+    </LinearLayout>
+
+    </LinearLayout>
+
     <LinearLayout
         android:id="@+id/petrol"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/fillingStation"
-        android:layout_marginTop="30dp"
+        android:layout_below="@+id/stationDetails"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal">
 
         <com.google.android.material.textview.MaterialTextView
@@ -53,7 +118,7 @@
         android:layout_below="@+id/petrol"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <com.google.android.material.textview.MaterialTextView
@@ -76,7 +141,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/superPetrol"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <com.google.android.material.textview.MaterialTextView
@@ -99,7 +164,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/diesel"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <com.google.android.material.textview.MaterialTextView
@@ -116,6 +181,9 @@
             android:src="@drawable/green_tick" />
 
     </LinearLayout>
+
+
+
 
     <LinearLayout
         android:id="@+id/position"
@@ -138,8 +206,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="monospace"
-            android:text="3"
-            android:padding="10dp"
+            android:text="0"
+            android:padding="5dp"
             android:textSize="48sp"
             android:src="@drawable/green_tick" />
 
@@ -151,7 +219,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/position"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="10dp"
         android:padding="12dp"
         android:text="More Details"
         android:textColor="@color/white"

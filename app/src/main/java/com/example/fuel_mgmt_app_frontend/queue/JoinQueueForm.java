@@ -18,6 +18,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.fuel_mgmt_app_frontend.DBHelper;
 import com.example.fuel_mgmt_app_frontend.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textview.MaterialTextView;
@@ -35,8 +36,9 @@ public class JoinQueueForm extends AppCompatActivity {
     MaterialTextView stationName;
     Spinner vehicleType;
     MaterialButton joinNowBtn;
-    String stationId = "6358f1fd7c214d90d7a47dcf", loggedInEmail = "avanthac@yahoo.com";
+    String stationId = "6358f1fd7c214d90d7a47dcf", loggedInEmail;
     Intent intent;
+    DBHelper dbHelper;
 
     private static final String[] VEHICLE_TYPES = new String[] {
             "SEDAN", "HATCHBACK", "T-WHEEL", "SUV", "VAN/LIGHT LORRY", "BUS/HEAVY LORRY", "MOTORBIKE"
@@ -56,6 +58,9 @@ public class JoinQueueForm extends AppCompatActivity {
 
         stationName.setText(getIntent().getStringExtra("stationName"));
 
+        dbHelper = new DBHelper(this);
+        loggedInEmail = dbHelper.logingEmail();
+
         //setting vehicle type dropdown list
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_dropdown_item, VEHICLE_TYPES);
@@ -67,6 +72,8 @@ public class JoinQueueForm extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //                create schedule async
+                Toast.makeText(JoinQueueForm.this,"Please wait...",Toast.LENGTH_SHORT).show();
+                joinNowBtn.setEnabled(false);
                 createSchedule(loggedInEmail);
             }
         });
@@ -95,11 +102,13 @@ public class JoinQueueForm extends AppCompatActivity {
                             Toast.makeText(JoinQueueForm.this,"Successfully joined the queue",Toast.LENGTH_SHORT).show();
                             intent = new Intent(this,JoinedStationQueueDetails.class);
                             intent.putExtra("station",stationId);
-                            startActivity(intent);
+                    intent.putExtra("schedule", response.toString());
+                    startActivity(intent);
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(JoinQueueForm.this,"Failed to join the queue",Toast.LENGTH_SHORT).show();
+                joinNowBtn.setEnabled(true);
             }
         });
         requestQueue.add(jsonObjectRequest);
