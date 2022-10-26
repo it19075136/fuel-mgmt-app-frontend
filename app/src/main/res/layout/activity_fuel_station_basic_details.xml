@@ -80,11 +80,12 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/arrival"
-            android:inputType="datetime"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="@string/fuel_arrival_time"
-            android:paddingBottom="20dp" />
+            android:inputType="datetime"
+            android:paddingBottom="20dp"
+            android:editable="false"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
