@@ -26,6 +26,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.fuel_mgmt_app_frontend.DBHelper;
 import com.example.fuel_mgmt_app_frontend.R;
 import com.example.fuel_mgmt_app_frontend.User.MainActivity;
+import com.example.fuel_mgmt_app_frontend.queue.JoinedStationQueueDetails;
 import com.google.android.material.button.MaterialButton;
 
 import org.json.JSONArray;
@@ -53,10 +54,9 @@ public class FuelStationUpdate extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fuel_station_update);
 
-        String data = getIntent().getExtras().getString("id","defaultKey");
+        String Id = getIntent().getExtras().getString("id","defaultKey");
 
-        Toast.makeText(FuelStationUpdate.this, "Id retrived success "+data, Toast.LENGTH_SHORT).show();
-
+        Toast.makeText(FuelStationUpdate.this, "Id retrived success "+Id, Toast.LENGTH_SHORT).show();
 
         availabilityBtn = findViewById(R.id.availability);
         proceedBtn = findViewById(R.id.next);
@@ -68,7 +68,11 @@ public class FuelStationUpdate extends AppCompatActivity {
         availabilities = new HashMap<>();
         RequestQueue requestQueue = Volley.newRequestQueue(FuelStationUpdate.this);
 
+        getFuelStationsByID(requestQueue,Id);
+
+
         createDialog();
+
         fuelArrivalTimeEditText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -141,59 +145,35 @@ public class FuelStationUpdate extends AppCompatActivity {
 
     }
 
-    public void getFuelStationsAPI(RequestQueue requestQueue){
-//        Toast.makeText(this,"test in",Toast.LENGTH_SHORT).show();
+    public void getFuelStationsByID(RequestQueue requestQueue, String Id){
+//
 
-//        String url = "https://fuely-api.herokuapp.com/api/fuelstation/byEmail/" + DB.logingEmail();
+        String url = "https://fuely-api.herokuapp.com/api/fuelstation/".concat(Id);
 ////                url += email;
-//
-//        JsonArrayRequest jsonArrayRequest  = new JsonArrayRequest(
-//                Request.Method.GET,
-//                url,
-//                null,
-//                new Response.Listener<JSONArray>() {
-//                    @Override
-//                    public void onResponse(JSONArray response) {
-////                                res[0] = response;
-//                        for (int i = 0; i < response.length(); i++) {
-//                            model = new StationModel();
-//                            try {
-//
-//                                JSONObject responseObj = response.getJSONObject(i);
-//
-////                                String location = responseObj.getString("location");
-//                                String stationName = responseObj.getString("stationName");
-//                                String stationID = responseObj.getString("id");
-////                                Log.d("location", location);
-////                                Log.d("stationName", stationName);
-//                                model.setStationName(stationName);
-//
-//                                fuelStationId.add(stationID);
-//                                fuelStations.add(model);
-//
-//                                Log.d("fuel station id", fuelStationId.get(i));
-//
-//                            } catch (JSONException e) {
-//                                e.printStackTrace();
-//                            }
-//                        }
-//
-//                        getFuelStationsList();
-//
-////                        for (int i = 0; i < response.length(); i++) {
-////                            Log.d("fuelStations array loop", String.valueOf(fuelStations.get(i)));
-////                        }
-//
-//                    }
-//                }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//
-//            }
-//        });
-//        requestQueue.add(jsonArrayRequest);
-//        JSONArray jsonArray=getStationById(url);
 
+        JsonObjectRequest jsonObjectRequest  = new JsonObjectRequest(
+                Request.Method.GET,
+                url,
+                null,
+                (Response.Listener<JSONObject>) response -> {
+
+                    try {
+                        locationEditText.setText((String)response.get("location"));
+                        stationNameEditText.setText((String)response.get("stationName"));
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(FuelStationUpdate.this,"Station fetching failed - "+error.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        requestQueue.add(jsonObjectRequest);
 
     }
 
