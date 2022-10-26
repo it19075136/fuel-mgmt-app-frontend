@@ -2,34 +2,33 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="20dp">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/primaryBlue"
+    android:layout_marginBottom="20dp"
+    tools:context=".toolbarActions">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-
-<!--        <ImageView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:id="@+id/left_icon"-->
-<!--            android:layout_centerVertical="true"/>-->
-
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_centerInParent="true"-->
-<!--            android:text="Fuely Application"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textSize="20sp" />-->
         <ImageView
+            android:id="@+id/left_icon"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/ic_baseline_arrow_back_ios_24" />
+
+        <TextView
+            style="@style/TextAppearance.MaterialComponents.Headline5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/right_icon"
-            android:layout_alignParentEnd="true"
-            android:src="@drawable/ic_icons8_logout_64"
-            android:layout_centerVertical="true"
-            />
+            android:layout_centerInParent="true"
+            android:text="Fuely"
+            android:textColor="@color/white" />
 
-    </RelativeLayout>
+        <ImageView
+            android:id="@+id/right_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_icons8_logout_64" />
+
 </RelativeLayout>

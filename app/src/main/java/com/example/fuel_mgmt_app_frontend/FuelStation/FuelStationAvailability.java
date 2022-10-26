@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -12,11 +13,14 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.example.fuel_mgmt_app_frontend.DBHelper;
 import com.example.fuel_mgmt_app_frontend.R;
+import com.example.fuel_mgmt_app_frontend.User.MainActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -26,6 +30,7 @@ public class FuelStationAvailability extends AppCompatActivity{
     EditText emailEditText,passwordEditText,districtEditText;
     TextView loginText,Diesel_arrival_time_txt,Diesel_finish_time_txt,Diesel_super_arrival_time_txt,Diesel_super_finish_time_txt,Petrol92_arrival_time_txt,Petrol92_finish_time_txt,Petrol95_arrival_time_txt,Petrol95_finish_time_txt;
     Button signupbtn,Diesel_arrival_time_btn,Diesel_finish_time_btn,Diesel_super_arrival_time_btn,Diesel_super_finish_time_btn,Petrol92_arrival_time_btn,Petrol92_finish_time_btn,Petrol95_arrival_time_btn,Petrol95_finish_time_btn;
+    ImageView signOutIcon;
 
     DBHelper DB;
     String[] item = {"kandy","Colombo","Ampara"};
@@ -42,6 +47,7 @@ public class FuelStationAvailability extends AppCompatActivity{
 //        districtEditText =  findViewById(R.id.district);
         signupbtn =  findViewById(R.id.signup);
 //        autoCompleteTxt =  findViewById(R.id.auto_complete);
+        signOutIcon = findViewById(R.id.right_icon);
 
         Diesel_arrival_time_txt =  findViewById(R.id.Diesel_arrival_time_txt);
         Diesel_finish_time_txt=  findViewById(R.id.Diesel_finish_time_txt);
@@ -72,6 +78,21 @@ public class FuelStationAvailability extends AppCompatActivity{
 
         adapterItem = new ArrayAdapter<String>(this,R.layout.list_item,item);
 //        autoCompleteTxt.setAdapter(adapterItem);
+        signOutIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(DB.logedOut()){
+
+                    Intent intent = new Intent(FuelStationAvailability.this, MainActivity.class);
+                    Toast.makeText(FuelStationAvailability.this, "Log out successful", Toast.LENGTH_SHORT).show();
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(FuelStationAvailability.this, "Log out Unsuccessful", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
 
         DB = new DBHelper(this);
 

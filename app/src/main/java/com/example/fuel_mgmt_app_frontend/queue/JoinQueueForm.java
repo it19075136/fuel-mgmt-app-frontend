@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.fuel_mgmt_app_frontend.DBHelper;
 import com.example.fuel_mgmt_app_frontend.R;
+import com.example.fuel_mgmt_app_frontend.User.MainActivity;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textview.MaterialTextView;
 
@@ -39,6 +41,7 @@ public class JoinQueueForm extends AppCompatActivity {
     String stationId, loggedInEmail;
     Intent intent;
     DBHelper dbHelper;
+    ImageView signOutIcon;
 
     private static final String[] VEHICLE_TYPES = new String[] {
             "SEDAN", "HATCHBACK", "T-WHEEL", "SUV", "VAN/LIGHT LORRY", "BUS/HEAVY LORRY", "MOTORBIKE"
@@ -55,6 +58,7 @@ public class JoinQueueForm extends AppCompatActivity {
         vehicleType = findViewById(R.id.vehicleType);
         stationName = findViewById(R.id.stationName);
         joinNowBtn = findViewById(R.id.joinNow);
+        signOutIcon = findViewById(R.id.right_icon);
 
         stationName.setText(getIntent().getStringExtra("stationName"));
         stationId = getIntent().getStringExtra("stationId");
@@ -68,6 +72,22 @@ public class JoinQueueForm extends AppCompatActivity {
         vehicleType.setAdapter(adapter);
 
         requestQueue = Volley.newRequestQueue(this);
+
+        signOutIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(dbHelper.logedOut()){
+
+                    Intent intent = new Intent(JoinQueueForm.this, MainActivity.class);
+                    Toast.makeText(JoinQueueForm.this, "Log out successful", Toast.LENGTH_SHORT).show();
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(JoinQueueForm.this, "Log out Unsuccessful", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
 
         joinNowBtn.setOnClickListener(new View.OnClickListener() {
             @Override
