@@ -63,4 +63,13 @@ public class SelectRegisrationType extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        if(false)
+            super.onBackPressed();
+        else
+            Toast.makeText(getApplicationContext(),"You Cannot go back",Toast.LENGTH_SHORT).show();
+
+    }
 }
