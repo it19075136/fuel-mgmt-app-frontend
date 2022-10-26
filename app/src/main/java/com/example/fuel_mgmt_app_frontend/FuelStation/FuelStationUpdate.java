@@ -56,6 +56,10 @@ public class FuelStationUpdate extends AppCompatActivity {
 
         String Id = getIntent().getExtras().getString("id","defaultKey");
 
+        String url = "https://fuely-api.herokuapp.com/api/fuelstation/".concat(Id);
+
+
+
         Toast.makeText(FuelStationUpdate.this, "Id retrived success "+Id, Toast.LENGTH_SHORT).show();
 
         availabilityBtn = findViewById(R.id.availability);
@@ -113,7 +117,6 @@ public class FuelStationUpdate extends AppCompatActivity {
                     String[] splitdate=datetime.split(" ");
                     String arrivaleTime=splitdate[0]+"T"+splitdate[1];
 //                    String strDate = "2013-05-15T10:00:00-0700";
-                    String url = "https://fuely-api.herokuapp.com/api/fuelstation";
 //                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
 //                    Date arrivaleTime = null;
 //                    try {
@@ -209,89 +212,6 @@ public class FuelStationUpdate extends AppCompatActivity {
 
     }
     public void createFuelStation(String url,String station,String location,HashMap<String,Boolean> availabilities,String arrivaleTime,RequestQueue requestQueue,String email){
-//        Map<String,String> params = new HashMap();
-//        for (int i = 0; i < availabilities.size(); i++) {
-//            params.put(availabilities.ke)
-//        }
-
-
-        //                StringRequest stringRequest = new StringRequest(
-//                Request.Method.POST,
-//                url,
-//                response -> Toast.makeText(FuelStationBasicDetails.this, "success", Toast.LENGTH_SHORT).show(),
-//                error -> Toast.makeText(FuelStationBasicDetails.this, "error", Toast.LENGTH_SHORT).show()){
-//            @Override
-//            protected Map getParams() throws AuthFailureError {
-//                Map params = new HashMap();
-//                params.put("location", location);
-//                params.put("stationName", station);
-//                params.put("fuelAvailability",availabilities);
-//                params.put("fuelArrivalTime",arrivaleTime);
-//                params.put("fuelFinishTime",arrivaleTime);
-//                params.put("email","sandungwp@gmail.com");
-//                Log.d("hashparams", String.valueOf(params));
-//                return params;
-//            }
-//        };
-//
-//        requestQueue.add(stringRequest);
-
-//        String tag_json_obj = "json_obj_req";
-//
-//        String
-//                url
-//                = "https:// api.xyz.info/volley/person_object.json";
-
-//        ProgressDialog pDialog = new ProgressDialog(this);
-//        pDialog.setMessage("Loading...PLease wait");
-//        pDialog.show();
-
-//        JsonObjectRequest
-//                jsonObjReq
-//                = new JsonObjectRequest(
-//                Request.Method.POST,
-//                url,
-//                null,
-//                new Response.Listener() {
-//
-//                    @Override
-//                    public void onResponse(JSONObject response)
-//                    {
-//                        Log.d("TAG", response.toString());
-////                        pDialog.hide();
-//                    }
-//                },
-//                new Response.ErrorListener() {
-//
-//                    @Override
-//                    public void onErrorResponse(VolleyError error)
-//                    {
-//                        VolleyLog.d("TAG", "Error: "
-//                                + error.getMessage());
-////                        pDialog.hide();
-//                    }
-//                }) {
-//
-//            @Override
-//            protected Map getParams()
-//            {
-//                Map params = new HashMap();
-//                params.put("location", location);
-//                params.put("stationName", station);
-//                params.put("fuelAvailability",availabilities);
-//                params.put("fuelArrivalTime",arrivaleTime);
-//                params.put("fuelFinishTime",arrivaleTime);
-//                params.put("email","sandungwp@gmail.com");
-//                Log.d("hashparams", String.valueOf(params));
-//
-//                return params;
-//            }
-//
-//        };
-//
-//        AppController.getInstance()
-//                .addToRequestQueue(jsonObjReq, tag_json_obj);
-
 
         JSONObject requestBody = new JSONObject();
         JSONObject requestBody1 = new JSONObject();
