@@ -282,18 +282,11 @@ public class FuelStationBasicDetails extends AppCompatActivity {
         }
 
         JsonObjectRequest jsonObjectRequest  = new JsonObjectRequest(
-                Request.Method.POST,
+                Request.Method.PUT,
                 url,
                 requestBody,
                 (Response.Listener<JSONObject>) response -> {
-                    for (int i = 0; i < response.length(); i++) {
 
-                        try {
-                            Toast.makeText(FuelStationBasicDetails.this,"Successfully created: "+response.getString("email"),Toast.LENGTH_SHORT).show();
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
