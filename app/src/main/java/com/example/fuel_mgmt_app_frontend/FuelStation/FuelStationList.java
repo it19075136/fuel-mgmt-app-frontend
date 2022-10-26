@@ -44,6 +44,7 @@ public class FuelStationList extends AppCompatActivity implements RecyclerViewIn
 
     RecyclerView recyclerView;
     ArrayList<StationModel> fuelStations = new ArrayList<StationModel>();
+    ArrayList<String> fuelStationId  = new ArrayList<String>();
     MainAdapter adapter;
 
     StationModel model;
@@ -82,48 +83,7 @@ public class FuelStationList extends AppCompatActivity implements RecyclerViewIn
 
 
                 Log.d("StartedMessage", "newFuelStation.setOnClickListener started");
-//                String email = DB.logingEmail();
-//                Log.d("loged email", email);
-     //           String url = "https://fuely-api.herokuapp.com/api/fuelstation/byEmail/sandungwp@gmail.com";
-//                url += email;
 
-//                JsonArrayRequest jsonArrayRequest  = new JsonArrayRequest(
-//                        Request.Method.GET,
-//                        url,
-//                        null,
-//                        new Response.Listener<JSONArray>() {
-//                            @Override
-//                            public void onResponse(JSONArray response) {
-////                                res[0] = response;
-//                                for (int i = 0; i < response.length(); i++) {
-//
-//                                    try {
-//
-//                                        JSONObject responseObj = response.getJSONObject(i);
-//
-//                                        String location = responseObj.getString("location");
-//                                        String stationName = responseObj.getString("stationName");
-//                                        Log.d("location", location);
-//                                        Log.d("stationName", stationName);
-//                                        model.setStationName(stationName);
-//
-//                                        fuelStations.add(model);
-//
-//
-//                                    } catch (JSONException e) {
-//                                        e.printStackTrace();
-//                                    }
-//                                }
-//                                Log.d("fuelStations Array size", String.valueOf(fuelStations.size()));
-//                            }
-//                        }, new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//
-//                    }
-//                });
-//                requestQueue.add(jsonArrayRequest);
-//                JSONArray jsonArray=getStationById(url);
                 Intent intent =  new Intent(FuelStationList.this, FuelStationBasicDetails.class);
                 startActivity(intent);
 
@@ -185,16 +145,6 @@ public class FuelStationList extends AppCompatActivity implements RecyclerViewIn
 
     private void getFuelStationsList() {
 
-//        StationModel model = new StationModel();
-        //loop and add names  in heres
-//        model.setStationName();
-        //call api before this
-        Log.d("getFlStationList size", String.valueOf(fuelStations.size()));
-
-
-        for (int i = 0; i < fuelStations.size(); i++) {
-                            Log.d("getFuelStationsList", fuelStations.get(i).getStationName());
-                        }
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -207,7 +157,7 @@ public class FuelStationList extends AppCompatActivity implements RecyclerViewIn
     public void getFuelStationsAPI(RequestQueue requestQueue){
 //        Toast.makeText(this,"test in",Toast.LENGTH_SHORT).show();
 
-        String url = "https://fuely-api.herokuapp.com/api/fuelstation/byEmail/sandungwp@gmail.com";
+        String url = "https://fuely-api.herokuapp.com/api/fuelstation/byEmail/" + DB.logingEmail();
 //                url += email;
 
         JsonArrayRequest jsonArrayRequest  = new JsonArrayRequest(
@@ -226,13 +176,15 @@ public class FuelStationList extends AppCompatActivity implements RecyclerViewIn
 
 //                                String location = responseObj.getString("location");
                                 String stationName = responseObj.getString("stationName");
+                                String stationID = responseObj.getString("id");
 //                                Log.d("location", location);
 //                                Log.d("stationName", stationName);
                                 model.setStationName(stationName);
 
+                                fuelStationId.add(stationID);
                                 fuelStations.add(model);
 
-//                                Log.d("fuel station nanme", fuelStations.get(i).stationName);
+                                Log.d("fuel station id", fuelStationId.get(i));
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -266,5 +218,13 @@ public class FuelStationList extends AppCompatActivity implements RecyclerViewIn
     @Override
     public void OnItemClick(int position) {
         Toast.makeText(this, "I've been clicked and id is = " + fuelStations.get(position).getStationName() + " & position is "+ position, Toast.LENGTH_SHORT).show();
+
+        intent = new Intent(FuelStationList.this, FuelStationUpdate.class);
+
+        intent.putExtra("id",fuelStationId.get(position));
+
+        startActivity(intent);
+
+
     }
 }
