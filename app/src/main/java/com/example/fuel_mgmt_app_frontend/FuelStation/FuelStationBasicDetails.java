@@ -57,6 +57,8 @@ public class FuelStationBasicDetails extends AppCompatActivity {
     DBHelper DB;
     AlertDialog dialog;
     EditText locationEditText,stationNameEditText,fuelArrivalTimeEditText;
+    String datetime;
+    String arrivaleTime = "2022-10-29T21:26:00Z";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,16 +88,17 @@ public class FuelStationBasicDetails extends AppCompatActivity {
             public void onClick(View view) {
                 if(DB.logedOut()){
 
-                    intent = new Intent(FuelStationBasicDetails.this, MainActivity.class);
-                    Toast.makeText(FuelStationBasicDetails.this, "Log out succesfuly", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(FuelStationBasicDetails.this, MainActivity.class);
+                    Toast.makeText(FuelStationBasicDetails.this, "Log out successful", Toast.LENGTH_SHORT).show();
                     startActivity(intent);
                 }
                 else{
-                    Toast.makeText(FuelStationBasicDetails.this, "Log out Unsuccesfuly", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(FuelStationBasicDetails.this, "Log out Unsuccessful", Toast.LENGTH_SHORT).show();
                 }
 
             }
         });
+
 
         availabilityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,9 +113,11 @@ public class FuelStationBasicDetails extends AppCompatActivity {
                 if(availabilityCheck){
                     String stationName = stationNameEditText.getText().toString();
                     String location = locationEditText.getText().toString();
-                    String datetime = "20"+fuelArrivalTimeEditText.getText().toString();//2022-10-26T05:02:25.825Z
-                    String[] splitdate=datetime.split(" ");
-                    String arrivaleTime=splitdate[0]+"T"+splitdate[1];
+                    if(!fuelArrivalTimeEditText.getText().toString().equals("")) {
+                        datetime = "20" + fuelArrivalTimeEditText.getText().toString();//2022-10-26T05:02:25.825Z
+                        String[] splitdate = datetime.split(" ");
+                        arrivaleTime = splitdate[0] + "T" + splitdate[1];
+                    }
 //                    String strDate = "2013-05-15T10:00:00-0700";
                     String url = "https://fuely-api.herokuapp.com/api/fuelstation";
 //                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
@@ -282,11 +287,11 @@ public class FuelStationBasicDetails extends AppCompatActivity {
         }
 
         JsonObjectRequest jsonObjectRequest  = new JsonObjectRequest(
-                Request.Method.PUT,
+                Request.Method.POST,
                 url,
                 requestBody,
                 (Response.Listener<JSONObject>) response -> {
-
+                        Toast.makeText(FuelStationBasicDetails.this,"Successfully created",Toast.LENGTH_SHORT).show();
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
