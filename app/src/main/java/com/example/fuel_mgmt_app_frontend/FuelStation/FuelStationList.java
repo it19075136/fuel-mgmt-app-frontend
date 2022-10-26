@@ -1,12 +1,16 @@
 package com.example.fuel_mgmt_app_frontend.FuelStation;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -22,9 +26,13 @@ import com.example.fuel_mgmt_app_frontend.SelectRegisrationType;
 import com.example.fuel_mgmt_app_frontend.User.MainActivity;
 import com.google.android.material.button.MaterialButton;
 
+
+import java.util.ArrayList;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 
 public class FuelStationList extends AppCompatActivity {
 
@@ -32,6 +40,12 @@ public class FuelStationList extends AppCompatActivity {
     ImageView backIcon,signOutIcon;
     DBHelper DB;
     Intent intent;
+
+    RecyclerView recyclerView;
+    ArrayList<StationModel> fuelStations = new ArrayList<StationModel>();
+    MainAdapter adapter;
+
+    StationModel model  = new StationModel();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +56,16 @@ public class FuelStationList extends AppCompatActivity {
         backIcon =  findViewById(R.id.left_icon);
         signOutIcon = findViewById(R.id.right_icon);
         DB = new DBHelper(this);
+
+
+        recyclerView = findViewById(R.id.recycler_view);
+
         RequestQueue requestQueue = Volley.newRequestQueue(this);
+
         newFuelStation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.d("StartedMessage", "newFuelStation.setOnClickListener started");
 //                String email = DB.logingEmail();
 //                Log.d("loged email", email);
                 String url = "https://fuely-api.herokuapp.com/api/fuelstation/byEmail/sandungwp@gmail.com";
@@ -69,11 +89,16 @@ public class FuelStationList extends AppCompatActivity {
                                         String stationName = responseObj.getString("stationName");
                                         Log.d("location", location);
                                         Log.d("stationName", stationName);
+                                        model.setStationName(stationName);
+
+                                        fuelStations.add(model);
+
 
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
                                 }
+                                Log.d("fuelStations Array size", String.valueOf(fuelStations.size()));
                             }
                         }, new Response.ErrorListener() {
                     @Override
@@ -85,6 +110,9 @@ public class FuelStationList extends AppCompatActivity {
                 JSONArray jsonArray=getStationById(url);
                 Intent intent =  new Intent(FuelStationList.this, FuelStationBasicDetails.class);
                 startActivity(intent);
+
+                getFuelStationsList();
+
             }
         });
         signOutIcon.setOnClickListener(new View.OnClickListener() {
@@ -140,6 +168,26 @@ public class FuelStationList extends AppCompatActivity {
         requestQueue.add(jsonArrayRequest);
         return res[0];
     }
+
+    private void getFuelStationsList() {
+
+//        StationModel model = new StationModel();
+        //loop and add names  in heres
+//        model.setStationName();
+        //call api before this
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        adapter = new MainAdapter(this,fuelStations);
+
+        recyclerView.setAdapter(adapter);
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
 
 
 }

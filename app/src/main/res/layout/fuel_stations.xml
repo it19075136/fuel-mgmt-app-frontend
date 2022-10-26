@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+<!--    <com.google.android.material.button.MaterialButton-->
+<!--        android:id="@+id/newFuelStation2"-->
+<!--        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:padding="12dp"-->
+<!--        android:text="Fuel Station Name"-->
+<!--        android:textColor="@color/white"-->
+<!--        app:cornerRadius="10dp"-->
+<!--        app:icon="@drawable/ic_baseline_add_circle_24"-->
+<!--        app:iconGravity="textStart"-->
+<!--        app:rippleColor="@color/ripple"-->
+<!--        tools:ignore="MissingConstraints">-->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/stationName"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            tools:ignore="MissingConstraints" />
+
+<!--    </com.google.android.material.button.MaterialButton>-->
+
+
+<!--    <TextView-->
+<!--        android:id="@+id/textView"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="TextView"-->
+<!--        tools:layout_editor_absoluteX="190dp"-->
+<!--        tools:layout_editor_absoluteY="28dp" />-->
+</androidx.constraintlayout.widget.ConstraintLayout>
