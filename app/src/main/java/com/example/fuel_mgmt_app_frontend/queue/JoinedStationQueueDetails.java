@@ -40,7 +40,7 @@ public class JoinedStationQueueDetails extends AppCompatActivity {
     RequestQueue requestQueue;
 
     MaterialButton moreDetailsBtn,completedBtn,exitBtn,closeDialog;
-    MaterialTextView stationHeading,positionNumber,sedanCount,hatchCount,vanCount,busCount,twCount,motorCount,suvCount;
+    MaterialTextView stationHeading,positionNumber,sedanCount,hatchCount,vanCount,busCount,twCount,motorCount,suvCount,location,arrivalTime,finishTime;
     ImageView petrolstatus,superPetrolstatus,dieselstatus,superDieselstatus;
     AlertDialog dialog;
 
@@ -67,6 +67,9 @@ public class JoinedStationQueueDetails extends AppCompatActivity {
 
         stationHeading = findViewById(R.id.fillingStation);
         positionNumber = findViewById(R.id.positionNumber);
+        location = findViewById(R.id.location);
+        arrivalTime = findViewById(R.id.arrivalTime);
+        finishTime = findViewById(R.id.finishTime);
 
         completedBtn = findViewById(R.id.completed);
         moreDetailsBtn = findViewById(R.id.moreDetails);
@@ -82,6 +85,9 @@ public class JoinedStationQueueDetails extends AppCompatActivity {
         completedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(JoinedStationQueueDetails.this,"please wait...",Toast.LENGTH_SHORT).show();
+                completedBtn.setEnabled(false);
+                exitBtn.setEnabled(false);
                 isPumped = true;
                 updateSchedule();
             }
@@ -90,6 +96,9 @@ public class JoinedStationQueueDetails extends AppCompatActivity {
         exitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(JoinedStationQueueDetails.this,"please wait...",Toast.LENGTH_SHORT).show();
+                exitBtn.setEnabled(false);
+                completedBtn.setEnabled(false);
                 isPumped = false;
                 updateSchedule();
             }
@@ -123,6 +132,9 @@ public class JoinedStationQueueDetails extends AppCompatActivity {
                         if (!(boolean) availObj.get("super diesel"))
                             superDieselstatus.setImageDrawable(getDrawable(R.drawable.red_cross));
                         stationHeading.setText((String) response.get("stationName"));
+                        location.setText((String) response.get("location"));
+                        arrivalTime.setText(response.get("fuelArrivalTime").toString().replace("T"," "));
+                        finishTime.setText(response.get("fuelFinishTime").toString().replace("T"," "));
                     } catch (JSONException e) {
                         Toast.makeText(JoinedStationQueueDetails.this,"Data error,please contact administrator: "+ e.getMessage(),Toast.LENGTH_SHORT).show();
                     }
@@ -184,6 +196,8 @@ public class JoinedStationQueueDetails extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(JoinedStationQueueDetails.this,"Action failed - "+error.getMessage(),Toast.LENGTH_SHORT).show();
+                completedBtn.setEnabled(true);
+                exitBtn.setEnabled(true);
             }
         });
         requestQueue.add(jsonObjectRequest);
