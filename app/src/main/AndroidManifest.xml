@@ -15,6 +15,15 @@
             android:name=".FuelStation.FuelStationUpdate"
             android:exported="false" />
         <activity
+            android:name=".queue.JoinedStationQueueDetails"
+            android:exported="false" />
+        <activity
+            android:name=".queue.JoinQueueForm"
+            android:exported="false" />
+        <activity
+            android:name=".queue.JoinQueueSearchList"
+            android:exported="false" />
+        <activity
             android:name=".FuelStation.FuelStationList"
             android:exported="false" />
         <activity

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    tools:context=".queue.JoinedStationQueueDetails">
+
+    <include
+        android:id="@+id/appbar"
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/fillingStation"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/appbar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp"
+        android:text="Filling Station Details"
+        android:textAlignment="center" />
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/location"
+        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fillingStation"
+        android:layout_centerHorizontal="true"
+        android:text="location" />
+
+    <LinearLayout
+        android:id="@+id/stationDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/location"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textview.MaterialTextView
+            style="@style/TextAppearance.MaterialComponents.Body2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Next Fuel arrival time: " />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/arrivalTime"
+            style="@style/TextAppearance.MaterialComponents.Body2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="loading..." />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textview.MaterialTextView
+            style="@style/TextAppearance.MaterialComponents.Body2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Approx. Fuel finish time: " />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/finishTime"
+            style="@style/TextAppearance.MaterialComponents.Body2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="loading..." />
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/petrol"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/stationDetails"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textview.MaterialTextView
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PETROL(92 octane)" />
+
+        <ImageView
+            android:id="@+id/petrolAvail"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="30dp"
+            android:src="@drawable/green_tick" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/superPetrol"
+        android:layout_below="@+id/petrol"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textview.MaterialTextView
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PETROL(95 octane)" />
+
+        <ImageView
+            android:id="@+id/superPetrolAvail"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/green_tick"
+            android:layout_marginStart="30dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/diesel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/superPetrol"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textview.MaterialTextView
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DIESEL" />
+
+        <ImageView
+            android:id="@+id/dieselAvail"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="30dp"
+            android:src="@drawable/green_tick" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/superDiesel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/diesel"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textview.MaterialTextView
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SUPER DIESEL" />
+
+        <ImageView
+            android:id="@+id/superDieselAvail"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="30dp"
+            android:src="@drawable/green_tick" />
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:id="@+id/position"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/superDiesel"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.google.android.material.textview.MaterialTextView
+            style="@style/TextAppearance.MaterialComponents.Body2"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="YOUR POSITION" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/positionNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:text="0"
+            android:padding="5dp"
+            android:textSize="48sp"
+            android:src="@drawable/green_tick" />
+
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/moreDetails"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/position"
+        android:layout_marginTop="10dp"
+        android:padding="12dp"
+        android:text="More Details"
+        android:textColor="@color/white"
+        app:cornerRadius="10dp"
+        app:rippleColor="@color/ripple" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/completed"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/moreDetails"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/success"
+        android:padding="12dp"
+        android:text="Exit after pump fuel"
+        android:textColor="@color/white"
+        app:cornerRadius="10dp"
+        app:rippleColor="@color/ripple" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/exit"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/completed"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/cancel"
+        android:padding="12dp"
+        android:text="Exit before pump fuel"
+        android:textColor="@color/white"
+        app:cornerRadius="10dp"
+        app:rippleColor="@color/ripple" />
+
+
+</RelativeLayout>

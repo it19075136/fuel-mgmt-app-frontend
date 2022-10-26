@@ -32,7 +32,10 @@ public class MainActivity extends AppCompatActivity {
         loginbtn =  findViewById(R.id.login);
         DB = new DBHelper(this);
 
-
+        if(DB.logingEmail()!=null){
+            Intent intent =  new Intent(MainActivity.this,SelectRegisrationType.class);
+            startActivity(intent);
+        }
         signupText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

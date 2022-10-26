@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".queue.JoinQueueForm"
+    android:padding="15dp"
+    android:gravity="center_vertical">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/stationName"
+        style="@style/TextAppearance.MaterialComponents.Headline5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="Station Name"
+        android:textAlignment="center" />
+
+    <ImageView
+        android:id="@+id/joinImage"
+        android:layout_below="@id/stationName"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="211dp"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="Join filling image"
+        android:src="@drawable/filling_join" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/joinImage"
+        android:layout_marginTop="20dp"
+        android:text="Choose Vehicle Type"
+        android:labelFor="@+id/vehicleType"
+        android:textAlignment="center"
+        />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/vehicleType"
+        style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox.Dense"
+        android:layout_below="@+id/joinImage"
+        android:layout_width="match_parent"
+        android:layout_marginTop="45dp"
+        android:layout_height="wrap_content"
+        android:outlineAmbientShadowColor="@color/primaryBlue"
+        android:textIsSelectable="true"
+        app:boxBackgroundColor="@color/placeholderColor"
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusBottomEnd="5dp"
+        app:boxCornerRadiusBottomStart="5dp">
+
+    </androidx.appcompat.widget.AppCompatSpinner>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/joinNow"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/vehicleType"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:padding="12dp"
+        android:text="join now"
+        android:textColor="@color/white"
+        app:cornerRadius="10dp"
+        app:rippleColor="@color/ripple" />
+
+</RelativeLayout>
