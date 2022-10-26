@@ -120,11 +120,11 @@ public class FuelStationList extends AppCompatActivity {
             public void onClick(View view) {
                 if(DB.logedOut()){
                     intent = new Intent(FuelStationList.this, MainActivity.class);
-                    Toast.makeText(FuelStationList.this, "Log out succesfuly", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(FuelStationList.this, "Logout successful", Toast.LENGTH_SHORT).show();
                     startActivity(intent);
                 }
                 else{
-                    Toast.makeText(FuelStationList.this, "Log out Unsuccesfuly", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(FuelStationList.this, "Logout failed", Toast.LENGTH_SHORT).show();
                 }
 
             }

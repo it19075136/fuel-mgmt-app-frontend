@@ -7,9 +7,9 @@
     tools:context=".FuelStation.FuelStationList"
     android:padding="15dp">
 
-    <include layout="@layout/toolbar"
+    <include
         android:id="@+id/appbar"
-        />
+        layout="@layout/toolbar" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/newFuelStation"
