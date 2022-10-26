@@ -1,6 +1,7 @@
 package com.example.fuel_mgmt_app_frontend.FuelStation;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +18,12 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
     Activity activity;
     ArrayList<StationModel> fuelStations;
 
-    public MainAdapter(Activity activity, ArrayList<StationModel> fuelStations){
+    private final RecyclerViewInterface recyclerViewInterface;
+
+    public MainAdapter(Activity activity, ArrayList<StationModel> fuelStations, RecyclerViewInterface recyclerViewInterface){
         this.activity = activity;
         this.fuelStations = fuelStations;
+        this.recyclerViewInterface = recyclerViewInterface;
         notifyDataSetChanged();
     }
 
@@ -29,15 +33,20 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         View view  = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.fuel_stations,parent,false);
 
-        return new ViewHolder(view);
+        return new ViewHolder(view, recyclerViewInterface);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
+//        Log.d("onBindViewHolder pos", String.valueOf(new Integer(position)));
+
         StationModel model = fuelStations.get(position);
 
+//        Log.d("model.getStationName()", model.getStationName());
+
         holder.Name.setText(model.getStationName());
+
 
     }
 
@@ -50,10 +59,23 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         //Initializer variable
         TextView Name;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView, RecyclerViewInterface recyclerViewInterface) {
             super(itemView);
 
             Name = itemView.findViewById(R.id.stationName);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(recyclerViewInterface != null){
+                        int pos = getAdapterPosition();
+
+                        if(pos != RecyclerView.NO_POSITION){
+                            recyclerViewInterface.OnItemClick(pos);
+                        }
+                    }
+                }
+            });
         }
     }
 }
