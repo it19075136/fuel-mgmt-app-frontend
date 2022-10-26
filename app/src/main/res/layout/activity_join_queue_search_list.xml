@@ -5,8 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".queue.JoinQueueSearchList"
-    android:padding="15dp"
     android:orientation="vertical">
+
+    <include
+        android:id="@+id/appbar"
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" />
+
+    <LinearLayout
+        android:layout_below="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="15dp"
+        >
 
     <SearchView
         android:id="@+id/searchview"
@@ -25,5 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
+
+    </LinearLayout>
 
 </LinearLayout>

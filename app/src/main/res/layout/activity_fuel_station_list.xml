@@ -4,12 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FuelStation.FuelStationList"
-    android:padding="15dp">
+    tools:context=".FuelStation.FuelStationList">
 
     <include
         android:id="@+id/appbar"
-        layout="@layout/toolbar" />
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" />
+
+    <LinearLayout
+        android:layout_below="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="15dp"
+        >
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/newFuelStation"
@@ -35,6 +45,8 @@
         tools:listitem="@layout/fuel_stations"
 
         />
+
+    </LinearLayout>
 
     <!--    <ScrollView-->
 <!--        android:layout_width="386dp"-->

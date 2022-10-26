@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
@@ -18,8 +19,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.fuel_mgmt_app_frontend.DBHelper;
 import com.example.fuel_mgmt_app_frontend.FuelStation.StationModel;
 import com.example.fuel_mgmt_app_frontend.R;
+import com.example.fuel_mgmt_app_frontend.User.MainActivity;
 import com.google.android.material.textview.MaterialTextView;
 
 import org.json.JSONArray;
@@ -33,6 +36,8 @@ public class JoinQueueSearchList extends AppCompatActivity {
     SearchView searchView;
     String stationName = "Jayasiri";
     Intent intent;
+    ImageView signOutIcon;
+    DBHelper dbHelper;
 
     ListView listView;
     ArrayList<StationModel> list;
@@ -51,10 +56,27 @@ public class JoinQueueSearchList extends AppCompatActivity {
         searchView = findViewById(R.id.searchview);
         searchView.setIconifiedByDefault(false);
         listView = findViewById(R.id.fuelStationList);
+        signOutIcon = findViewById(R.id.right_icon);
+        dbHelper = new DBHelper(this);
 
         requestQueue = Volley.newRequestQueue(this);
 
         list = new ArrayList<>();
+
+        signOutIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(dbHelper.logedOut()){
+                    Intent intent = new Intent(JoinQueueSearchList.this, MainActivity.class);
+                    Toast.makeText(JoinQueueSearchList.this, "Log out successful", Toast.LENGTH_SHORT).show();
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(JoinQueueSearchList.this, "Log out Unsuccessful", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

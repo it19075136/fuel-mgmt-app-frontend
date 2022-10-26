@@ -86,16 +86,17 @@ public class FuelStationBasicDetails extends AppCompatActivity {
             public void onClick(View view) {
                 if(DB.logedOut()){
 
-                    intent = new Intent(FuelStationBasicDetails.this, MainActivity.class);
-                    Toast.makeText(FuelStationBasicDetails.this, "Log out succesfuly", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(FuelStationBasicDetails.this, MainActivity.class);
+                    Toast.makeText(FuelStationBasicDetails.this, "Log out successful", Toast.LENGTH_SHORT).show();
                     startActivity(intent);
                 }
                 else{
-                    Toast.makeText(FuelStationBasicDetails.this, "Log out Unsuccesfuly", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(FuelStationBasicDetails.this, "Log out Unsuccessful", Toast.LENGTH_SHORT).show();
                 }
 
             }
         });
+
 
         availabilityBtn.setOnClickListener(new View.OnClickListener() {
             @Override

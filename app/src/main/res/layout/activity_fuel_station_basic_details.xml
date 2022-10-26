@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="15dp"
     tools:context=".FuelStation.FuelStationBasicDetails">
 
     <include
@@ -14,11 +13,19 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true" />
 
+    <LinearLayout
+        android:layout_below="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="15dp"
+        >
+
     <ImageView
         android:id="@+id/fillingStation"
         android:layout_width="wrap_content"
         android:layout_height="136dp"
-        android:layout_below="@+id/appbar"
+
         android:layout_marginTop="11dp"
         android:contentDescription="Filling Station"
         android:elevation="10dp"
@@ -119,5 +126,7 @@
         android:textColor="@color/white"
         app:cornerRadius="10dp"
         app:rippleColor="@color/ripple" />
+
+    </LinearLayout>
 
 </RelativeLayout>

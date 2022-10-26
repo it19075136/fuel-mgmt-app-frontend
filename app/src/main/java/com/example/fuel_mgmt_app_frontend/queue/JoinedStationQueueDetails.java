@@ -17,8 +17,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.fuel_mgmt_app_frontend.DBHelper;
 import com.example.fuel_mgmt_app_frontend.R;
 import com.example.fuel_mgmt_app_frontend.SelectRegisrationType;
+import com.example.fuel_mgmt_app_frontend.User.MainActivity;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textview.MaterialTextView;
 
@@ -34,6 +36,8 @@ public class JoinedStationQueueDetails extends AppCompatActivity {
     Intent intent;
     JSONObject schedule;
     boolean isPumped = false;
+    ImageView signOutIcon;
+    DBHelper DB;
 
     String SCHEDULE_ENDPOINT = "https://fuely-api.herokuapp.com/api/schedule";
     String FUEL_STATION_ENDPOINT = "https://fuely-api.herokuapp.com/api/fuelstation";
@@ -53,6 +57,7 @@ public class JoinedStationQueueDetails extends AppCompatActivity {
 
         Toast.makeText(this,"Please wait...",Toast.LENGTH_SHORT).show();
 
+        DB = new DBHelper(this);
         stationId = getIntent().getStringExtra("station");
         try {
             schedule = new JSONObject(getIntent().getStringExtra("schedule"));
@@ -74,6 +79,7 @@ public class JoinedStationQueueDetails extends AppCompatActivity {
         completedBtn = findViewById(R.id.completed);
         moreDetailsBtn = findViewById(R.id.moreDetails);
         exitBtn = findViewById(R.id.exit);
+        signOutIcon = findViewById(R.id.right_icon);
 
         moreDetailsBtn.setEnabled(false);
 
@@ -81,6 +87,22 @@ public class JoinedStationQueueDetails extends AppCompatActivity {
 
         setAvailabilities(stationId);
         setPosition();
+
+        signOutIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(DB.logedOut()){
+
+                    Intent intent = new Intent(JoinedStationQueueDetails.this, MainActivity.class);
+                    Toast.makeText(JoinedStationQueueDetails.this, "Log out successful", Toast.LENGTH_SHORT).show();
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(JoinedStationQueueDetails.this, "Log out Unsuccessful", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
 
         completedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
