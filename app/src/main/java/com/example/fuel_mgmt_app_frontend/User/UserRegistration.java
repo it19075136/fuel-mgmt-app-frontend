@@ -33,7 +33,10 @@ public class UserRegistration extends AppCompatActivity{
         signupbtn =  findViewById(R.id.signup);
         loginText = findViewById(R.id.AlreadyHaveAccount);
         DB = new DBHelper(this);
-
+        if(DB.logingEmail()!=null){
+            Intent intent =  new Intent(UserRegistration.this,SelectRegisrationType.class);
+            startActivity(intent);
+        }
         loginText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
