@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.fuel_mgmt_app_frontend.FuelStation.FuelStationList;
 import com.example.fuel_mgmt_app_frontend.User.MainActivity;
 import com.example.fuel_mgmt_app_frontend.User.UserRegistration;
+import com.example.fuel_mgmt_app_frontend.queue.JoinQueueSearchList;
 
 public class SelectRegisrationType extends AppCompatActivity {
 
@@ -35,14 +36,13 @@ public class SelectRegisrationType extends AppCompatActivity {
         signOutIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Log.d("maxScore", String.valueOf(DB.logedOut()));
                 if(DB.logedOut()){
                     intent = new Intent(SelectRegisrationType.this, MainActivity.class);
-                    Toast.makeText(SelectRegisrationType.this, "Log out succesfuly", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SelectRegisrationType.this, "Logout successful", Toast.LENGTH_SHORT).show();
                     startActivity(intent);
                 }
                 else{
-                    Toast.makeText(SelectRegisrationType.this, "Log out Unsuccesfuly", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SelectRegisrationType.this, "Logout failed", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -51,7 +51,7 @@ public class SelectRegisrationType extends AppCompatActivity {
         userTypebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =  new Intent(SelectRegisrationType.this, UserRegistration.class);
+                Intent intent =  new Intent(SelectRegisrationType.this, JoinQueueSearchList.class);
                 startActivity(intent);
             }
         });
