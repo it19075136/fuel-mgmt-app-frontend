@@ -203,6 +203,7 @@ public class JoinedStationQueueDetails extends AppCompatActivity {
         requestQueue.add(jsonObjectRequest);
     }
 
+//    creates moreDetails dialog
     private void createDialog(JSONArray queueList) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

@@ -20,16 +20,10 @@
         android:clickable="true"
         android:focusable="true" />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:id="@+id/joinBtn"
+        <ListView
+            android:id="@+id/fuelStationList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Join" />
-
-    </ScrollView>
+            />
 
 </LinearLayout>

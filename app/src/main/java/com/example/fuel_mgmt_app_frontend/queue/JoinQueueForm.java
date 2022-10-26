@@ -36,7 +36,7 @@ public class JoinQueueForm extends AppCompatActivity {
     MaterialTextView stationName;
     Spinner vehicleType;
     MaterialButton joinNowBtn;
-    String stationId = "6358f1fd7c214d90d7a47dcf", loggedInEmail;
+    String stationId, loggedInEmail;
     Intent intent;
     DBHelper dbHelper;
 
@@ -57,6 +57,7 @@ public class JoinQueueForm extends AppCompatActivity {
         joinNowBtn = findViewById(R.id.joinNow);
 
         stationName.setText(getIntent().getStringExtra("stationName"));
+        stationId = getIntent().getStringExtra("stationId");
 
         dbHelper = new DBHelper(this);
         loggedInEmail = dbHelper.logingEmail();
