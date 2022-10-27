@@ -177,8 +177,7 @@ public class FuelStationList extends AppCompatActivity implements RecyclerViewIn
 //                                String location = responseObj.getString("location");
                                 String stationName = responseObj.getString("stationName");
                                 String stationID = responseObj.getString("id");
-//                                Log.d("location", location);
-//                                Log.d("stationName", stationName);
+                                Log.d("stationName", stationName);
                                 model.setStationName(stationName);
 
                                 fuelStationId.add(stationID);

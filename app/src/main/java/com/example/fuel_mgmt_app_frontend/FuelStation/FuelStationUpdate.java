@@ -36,6 +36,7 @@ import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Locale;
 
 public class FuelStationUpdate extends AppCompatActivity {
 
@@ -47,7 +48,13 @@ public class FuelStationUpdate extends AppCompatActivity {
     ImageView signOutIcon;
     DBHelper DB;
     AlertDialog dialog;
-    EditText locationEditText,stationNameEditText,fuelArrivalTimeEditText;
+    EditText locationEditText,stationNameEditText,fuelArrivalTimeEditText,etDate;
+    String id,location1,stationName1,fuelArrivalTime1,fuelFinishTime,email;
+    JSONObject testAvailableObject = new JSONObject();
+
+    DatePickerDialog.OnDateSetListener setListener;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,9 +65,31 @@ public class FuelStationUpdate extends AppCompatActivity {
 
         String url = "https://fuely-api.herokuapp.com/api/fuelstation/".concat(Id);
 
+        etDate = findViewById(R.id.arrivalTime);
 
+        Calendar calendar= Calendar.getInstance();
 
-        Toast.makeText(FuelStationUpdate.this, "Id retrived success "+Id, Toast.LENGTH_SHORT).show();
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        etDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        FuelStationUpdate.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        month = month + 1;
+                        String date = day+"/"+month+"/"+year;
+                        etDate.setText(date);
+                    }
+                },year,month,day);
+                        datePickerDialog.show();
+
+            }
+        });
+
 
         availabilityBtn = findViewById(R.id.availability);
         proceedBtn = findViewById(R.id.next);
@@ -73,7 +102,6 @@ public class FuelStationUpdate extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(FuelStationUpdate.this);
 
         getFuelStationsByID(requestQueue,Id);
-
 
         createDialog();
 
@@ -114,8 +142,8 @@ public class FuelStationUpdate extends AppCompatActivity {
                     String stationName = stationNameEditText.getText().toString();
                     String location = locationEditText.getText().toString();
                     String datetime = "20"+fuelArrivalTimeEditText.getText().toString();//2022-10-26T05:02:25.825Z
-                    String[] splitdate=datetime.split(" ");
-                    String arrivaleTime=splitdate[0]+"T"+splitdate[1];
+//                    String[] splitdate=datetime.split(" ");
+//                    String arrivaleTime=splitdate[0]+"T"+splitdate[1];
 //                    String strDate = "2013-05-15T10:00:00-0700";
 //                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
 //                    Date arrivaleTime = null;
@@ -128,21 +156,18 @@ public class FuelStationUpdate extends AppCompatActivity {
 //                    Log.d("arrivaleTime", String.valueOf(arrivaleTime));
 //                    System.out.println(arrivaleTime);
                     if(DB.logingEmail()!=null){
-                        createFuelStation(url,stationName,location, availabilities,arrivaleTime,requestQueue,DB.logingEmail());
+                        createFuelStation(url,stationName,location, availabilities,"2022-10-26T05:02:25.825Z",requestQueue,DB.logingEmail());
                     }
-
-
 
 //                    AppController.getInstance()
 //                            .addToRequestQueue(jsonObjReq, tag_json_obj);
 //                    create fuel station in mongo db
-                    Toast.makeText(FuelStationUpdate.this, "Fuel station created successfully", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(FuelStationUpdate.this, "Fuel station created successfully", Toast.LENGTH_SHORT).show();
                     intent = new Intent(FuelStationUpdate.this,FuelStationList.class);
                     startActivity(intent);
                 }
                 else
                     Toast.makeText(FuelStationUpdate.this, "Please set availabilities in order to proceed", Toast.LENGTH_SHORT).show();
-
             }
         });
 
@@ -163,6 +188,12 @@ public class FuelStationUpdate extends AppCompatActivity {
                     try {
                         locationEditText.setText((String)response.get("location"));
                         stationNameEditText.setText((String)response.get("stationName"));
+                        id = (String)response.get("id");
+//                       location = (String)response.get("id");
+//                       stationName = (String)response.get("id");
+                        fuelFinishTime= (String)response.get("fuelFinishTime");
+                        email= (String)response.get("email");
+                        testAvailableObject = (JSONObject) response.get("fuelAvailability");
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -221,6 +252,7 @@ public class FuelStationUpdate extends AppCompatActivity {
                 requestBody1.put(i,availabilities.get(i));
             }
 
+            requestBody.put("id", id);
             requestBody.put("location", location);
             requestBody.put("stationName", station);
             requestBody.put("fuelAvailability", requestBody1);
