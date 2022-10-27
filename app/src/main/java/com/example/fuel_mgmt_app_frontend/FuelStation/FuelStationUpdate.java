@@ -33,6 +33,14 @@ public class FuelStationUpdate extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fuel_station_update);
 
+        backIcon = findViewById(R.id.left_icon);
+
+        backIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 //        availabilityBtn = findViewById(R.id.availability);
 //        proceedBtn = findViewById(R.id.next);
 //        backIcon =  findViewById(R.id.left_icon);

@@ -38,7 +38,7 @@ import org.json.JSONObject;
 public class FuelStationList extends AppCompatActivity implements RecyclerViewInterface {
 
     MaterialButton newFuelStation;
-    ImageView signOutIcon;
+    ImageView signOutIcon,backIcon;
     DBHelper DB;
     Intent intent;
 
@@ -60,7 +60,14 @@ public class FuelStationList extends AppCompatActivity implements RecyclerViewIn
         newFuelStation = findViewById(R.id.newFuelStation);
         signOutIcon = findViewById(R.id.right_icon);
         DB = new DBHelper(this);
+        backIcon = findViewById(R.id.left_icon);
 
+        backIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         recyclerView = findViewById(R.id.recycler_view);
 

@@ -36,7 +36,7 @@ public class JoinedStationQueueDetails extends AppCompatActivity {
     Intent intent;
     JSONObject schedule;
     boolean isPumped = false;
-    ImageView signOutIcon;
+    ImageView signOutIcon,backIcon;
     DBHelper DB;
 
     String SCHEDULE_ENDPOINT = "https://fuely-api.herokuapp.com/api/schedule";
@@ -87,6 +87,15 @@ public class JoinedStationQueueDetails extends AppCompatActivity {
 
         setAvailabilities(stationId);
         setPosition();
+
+        backIcon = findViewById(R.id.left_icon);
+
+        backIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         signOutIcon.setOnClickListener(new View.OnClickListener() {
             @Override
