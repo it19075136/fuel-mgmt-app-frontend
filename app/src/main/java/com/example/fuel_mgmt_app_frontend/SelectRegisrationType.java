@@ -30,6 +30,8 @@ public class SelectRegisrationType extends AppCompatActivity {
         userTypebtn = findViewById(R.id.UserType);
         fuelStationTypebtn = findViewById(R.id.FuelStationType);
         signOutIcon = findViewById(R.id.right_icon);
+        findViewById(R.id.left_icon).setVisibility(View.INVISIBLE);
+
         DB = new DBHelper(this);
 
         signOutIcon.setOnClickListener(new View.OnClickListener() {

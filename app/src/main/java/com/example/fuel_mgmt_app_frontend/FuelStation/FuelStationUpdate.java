@@ -44,7 +44,7 @@ public class FuelStationUpdate extends AppCompatActivity {
     HashMap<String,Boolean> availabilities;
     boolean availabilityCheck = false;
     Intent intent;
-    ImageView signOutIcon;
+    ImageView signOutIcon,backIcon;
     DBHelper DB;
     AlertDialog dialog;
     EditText locationEditText,stationNameEditText,fuelArrivalTimeEditText;
@@ -53,6 +53,15 @@ public class FuelStationUpdate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fuel_station_update);
+
+        backIcon = findViewById(R.id.left_icon);
+
+        backIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         String Id = getIntent().getExtras().getString("id","defaultKey");
 

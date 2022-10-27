@@ -41,7 +41,7 @@ public class JoinQueueForm extends AppCompatActivity {
     String stationId, loggedInEmail;
     Intent intent;
     DBHelper dbHelper;
-    ImageView signOutIcon;
+    ImageView signOutIcon,backIcon;
 
     private static final String[] VEHICLE_TYPES = new String[] {
             "SEDAN", "HATCHBACK", "T-WHEEL", "SUV", "VAN/LIGHT LORRY", "BUS/HEAVY LORRY", "MOTORBIKE"
@@ -72,6 +72,15 @@ public class JoinQueueForm extends AppCompatActivity {
         vehicleType.setAdapter(adapter);
 
         requestQueue = Volley.newRequestQueue(this);
+
+        backIcon = findViewById(R.id.left_icon);
+
+        backIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         signOutIcon.setOnClickListener(new View.OnClickListener() {
             @Override

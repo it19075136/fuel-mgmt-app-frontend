@@ -36,7 +36,7 @@ public class JoinQueueSearchList extends AppCompatActivity {
     SearchView searchView;
     String stationName = "Jayasiri";
     Intent intent;
-    ImageView signOutIcon;
+    ImageView signOutIcon,backIcon;
     DBHelper dbHelper;
 
     ListView listView;
@@ -57,11 +57,19 @@ public class JoinQueueSearchList extends AppCompatActivity {
         searchView.setIconifiedByDefault(false);
         listView = findViewById(R.id.fuelStationList);
         signOutIcon = findViewById(R.id.right_icon);
+        backIcon = findViewById(R.id.left_icon);
         dbHelper = new DBHelper(this);
 
         requestQueue = Volley.newRequestQueue(this);
 
         list = new ArrayList<>();
+
+        backIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         signOutIcon.setOnClickListener(new View.OnClickListener() {
             @Override

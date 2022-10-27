@@ -53,7 +53,7 @@ public class FuelStationBasicDetails extends AppCompatActivity {
     HashMap<String,Boolean> availabilities;
     boolean availabilityCheck = false;
     Intent intent;
-    ImageView signOutIcon;
+    ImageView signOutIcon,backIcon;
     DBHelper DB;
     AlertDialog dialog;
     EditText locationEditText,stationNameEditText,fuelArrivalTimeEditText;
@@ -74,6 +74,14 @@ public class FuelStationBasicDetails extends AppCompatActivity {
         DB = new DBHelper(this);
         availabilities = new HashMap<>();
         RequestQueue requestQueue = Volley.newRequestQueue(FuelStationBasicDetails.this);
+        backIcon = findViewById(R.id.left_icon);
+
+        backIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         createDialog();
         fuelArrivalTimeEditText.setOnClickListener(new View.OnClickListener() {
