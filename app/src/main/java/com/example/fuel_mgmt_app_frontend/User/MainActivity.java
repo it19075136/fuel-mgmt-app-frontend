@@ -57,10 +57,13 @@ public class MainActivity extends AppCompatActivity {
                 if(email.equals("")||password.equals("")){
                     Toast.makeText(MainActivity.this, "Please Enter all the details", Toast.LENGTH_SHORT).show();
                 }
-                else if(DB.checkEmailPassword(email,password) && DB.loging(email)){
-                    Toast.makeText(MainActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
-                    Intent intent =  new Intent(MainActivity.this, SelectRegisrationType.class);
-                    startActivity(intent);
+                else if(DB.checkEmailPassword(email,password)){
+                    if(DB.loging(email)){
+                        Toast.makeText(MainActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
+                        Intent intent =  new Intent(MainActivity.this, SelectRegisrationType.class);
+                        startActivity(intent);
+                    }
+
                 }
                 else{
                     Toast.makeText(MainActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
