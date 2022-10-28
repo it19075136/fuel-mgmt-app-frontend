@@ -66,6 +66,7 @@
         android:outlineAmbientShadowColor="@color/primaryBlue"
         app:boxBackgroundColor="@color/placeholderColor"
         app:boxBackgroundMode="outline"
+        app:endIconMode="password_toggle"
         android:layout_weight="90"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -80,12 +81,12 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-        <ImageButton
-            android:background="@color/design_default_color_on_primary"
-            android:layout_weight="5"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/show_pass_24" />
+<!--        <ImageButton-->
+<!--            android:background="@color/design_default_color_on_primary"-->
+<!--            android:layout_weight="5"-->
+<!--            android:layout_width="24dp"-->
+<!--            android:layout_height="24dp"-->
+<!--            android:src="@drawable/show_pass_24" />-->
 
     </LinearLayout>
 
@@ -105,6 +106,7 @@
         app:boxBackgroundColor="@color/placeholderColor"
         app:boxBackgroundMode="outline"
         android:layout_weight="90"
+        app:endIconMode="password_toggle"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content">
 
@@ -118,12 +120,12 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-        <ImageButton
-            android:background="@color/design_default_color_on_primary"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_weight="5"
-            android:src="@drawable/show_pass_24" />
+<!--        <ImageButton-->
+<!--            android:background="@color/design_default_color_on_primary"-->
+<!--            android:layout_width="24dp"-->
+<!--            android:layout_height="24dp"-->
+<!--            android:layout_weight="5"-->
+<!--            android:src="@drawable/show_pass_24" />-->
 
     </LinearLayout>
 
