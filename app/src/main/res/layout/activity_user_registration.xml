@@ -60,33 +60,33 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        app:boxCornerRadiusBottomStart="5dp"
+        app:boxCornerRadiusBottomEnd="5dp"
+        android:outlineAmbientShadowColor="@color/primaryBlue"
+        app:boxBackgroundColor="@color/placeholderColor"
+        app:boxBackgroundMode="outline"
+        app:endIconMode="password_toggle"
+        android:layout_weight="90"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password"
+            android:inputType="textPassword"
+            android:paddingBottom="20dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="90"
+            android:hint="@string/password"
             android:outlineAmbientShadowColor="@color/primaryBlue"
             app:boxBackgroundColor="@color/placeholderColor"
             app:boxBackgroundMode="outline"
             app:boxCornerRadiusBottomEnd="5dp"
-            app:boxCornerRadiusBottomStart="5dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/password"
-                android:inputType="textPassword"
-                android:paddingBottom="20dp" />
+            app:boxCornerRadiusBottomStart="5dp"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <ImageButton
-            android:id="@+id/showPass"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_weight="5"
-            android:background="@color/design_default_color_on_primary"
-            android:src="@drawable/ic_hide" />
 
     </LinearLayout>
 
@@ -106,6 +106,7 @@
         app:boxBackgroundColor="@color/placeholderColor"
         app:boxBackgroundMode="outline"
         android:layout_weight="90"
+        app:endIconMode="password_toggle"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content">
 
@@ -118,14 +119,6 @@
             android:hint="@string/re_enter_password" />
 
     </com.google.android.material.textfield.TextInputLayout>
-
-        <ImageButton
-            android:id="@+id/showPassRe"
-            android:background="@color/design_default_color_on_primary"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_weight="5"
-            android:src="@drawable/ic_hide" />
 
     </LinearLayout>
 

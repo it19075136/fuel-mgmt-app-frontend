@@ -23,10 +23,6 @@ public class UserRegistration extends AppCompatActivity{
     TextView loginText;
     DBHelper DB;
 
-    ImageView showPass,showPassRe;
-
-    private static final int HIDDEN_PASSWORD = 129;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,38 +43,6 @@ public class UserRegistration extends AppCompatActivity{
             public void onClick(View view) {
                 Intent intent =  new Intent(UserRegistration.this,MainActivity.class);
                 startActivity(intent);
-            }
-        });
-
-
-        showPass = findViewById(R.id.showPass);
-        showPassRe = findViewById(R.id.showPassRe);
-
-        showPass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(passwordEditText.getInputType() == HIDDEN_PASSWORD) {
-                    passwordEditText.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
-                    showPass.setImageDrawable(getDrawable(R.drawable.show_pass_24));
-                }
-                else {
-                    passwordEditText.setInputType(HIDDEN_PASSWORD);
-                    showPass.setImageDrawable(getDrawable(R.drawable.ic_hide));
-                }
-            }
-        });
-
-        showPassRe.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(rePasswordEditText.getInputType() == HIDDEN_PASSWORD) {
-                    rePasswordEditText.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
-                    showPassRe.setImageDrawable(getDrawable(R.drawable.show_pass_24));
-                }
-                else {
-                    rePasswordEditText.setInputType(HIDDEN_PASSWORD);
-                    showPassRe.setImageDrawable(getDrawable(R.drawable.ic_hide));
-                }
             }
         });
 

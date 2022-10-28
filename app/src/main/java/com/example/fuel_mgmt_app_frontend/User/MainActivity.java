@@ -23,11 +23,6 @@ public class MainActivity extends AppCompatActivity {
     Button loginbtn;
     DBHelper DB;
 
-
-    ImageView showPass;
-
-    private static final int HIDDEN_PASSWORD = 129;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,23 +38,6 @@ public class MainActivity extends AppCompatActivity {
             Intent intent =  new Intent(MainActivity.this,SelectRegisrationType.class);
             startActivity(intent);
         }
-
-        showPass = findViewById(R.id.showPass);
-
-        showPass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(passwordEditText.getInputType() == HIDDEN_PASSWORD) {
-                    passwordEditText.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
-                    showPass.setImageDrawable(getDrawable(R.drawable.show_pass_24));
-                }
-                else {
-                    passwordEditText.setInputType(HIDDEN_PASSWORD);
-                    showPass.setImageDrawable(getDrawable(R.drawable.ic_hide));
-                }
-            }
-        });
-
 
         signupText.setOnClickListener(new View.OnClickListener() {
             @Override
